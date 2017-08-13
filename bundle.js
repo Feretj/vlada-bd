@@ -9740,6 +9740,8 @@ module.exports = getHostComponentFromComposite;
 "use strict";
 
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(82);
 
 var _react2 = _interopRequireDefault(_react);
@@ -9750,11 +9752,65 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(
-  "h1",
-  null,
-  "Helo, world!"
-), document.getElementById("root"));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BirthdayApp = function (_React$Component) {
+  _inherits(BirthdayApp, _React$Component);
+
+  function BirthdayApp() {
+    _classCallCheck(this, BirthdayApp);
+
+    return _possibleConstructorReturn(this, (BirthdayApp.__proto__ || Object.getPrototypeOf(BirthdayApp)).apply(this, arguments));
+  }
+
+  _createClass(BirthdayApp, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(Password, null);
+    }
+  }]);
+
+  return BirthdayApp;
+}(_react2.default.Component);
+
+var Password = function (_React$Component2) {
+  _inherits(Password, _React$Component2);
+
+  function Password() {
+    _classCallCheck(this, Password);
+
+    return _possibleConstructorReturn(this, (Password.__proto__ || Object.getPrototypeOf(Password)).apply(this, arguments));
+  }
+
+  _createClass(Password, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { style: { height: "100%", width: "100%", display: "flex", alignItems: "center", justifyContent: "center" } },
+        _react2.default.createElement(
+          "div",
+          { style: {} },
+          _react2.default.createElement("input", { placeholder: "type password" }),
+          " "
+        )
+      );
+    }
+  }]);
+
+  return Password;
+}(_react2.default.Component);
+
+console.log("Hello, use window.Start_Vlada_hacking()");
+window.Start_Vlada_hacking = function () {
+  alert("ok");
+};
+
+_reactDom2.default.render(_react2.default.createElement(BirthdayApp, null), document.getElementById("root"));
 
 /***/ }),
 /* 82 */
