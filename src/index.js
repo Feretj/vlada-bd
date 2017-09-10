@@ -10,7 +10,7 @@ const screens = {
 
 class BirthdayApp extends React.Component {
   state = { password: "" };
-  onPasswordChange = password => this.setState({ password });
+  onPasswordChange = event => this.setState({ password: event.target.value });
   componentWillMount = () => {
     window.Start_Vlada_hacking = () => {
       this.setState({ password: "yeah, hack me ;)" });
@@ -53,7 +53,11 @@ const Password = ({ password, onPasswordChange }) => (
     }}
   >
     <div>
-      <input placeholder="type password" value={password} />
+      <input
+        placeholder="type password"
+        value={password}
+        onChange={onPasswordChange}
+      />
       <input type="button" />
     </div>
   </div>
@@ -72,7 +76,11 @@ const PasswordHeader = ({ password, onPasswordChange }) => (
   >
     Пароль для этой страницы, запомни, чтоб вернуться
     <div>
-      <input placeholder="type password" value={password} />
+      <input
+        placeholder="type password"
+        value={password}
+        onChange={onPasswordChange}
+      />
       <input type="button" />
     </div>
   </div>
