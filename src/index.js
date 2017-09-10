@@ -74,7 +74,6 @@ const Password = ({ password, onPasswordChange, inputRef }) => (
           e.target.value = tmp;
         }}
       />
-      <input type="button" />
     </div>
   </div>
 );
@@ -103,7 +102,6 @@ const PasswordHeader = ({ password, onPasswordChange, inputRef }) => (
           e.target.value = tmp;
         }}
       />
-      <input type="button" />
     </div>
   </div>
 );
