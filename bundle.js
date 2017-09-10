@@ -9758,57 +9758,146 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var screens = {
+  happybirthday: "Привет",
+  vlada: null,
+  sergey: "wtf",
+  "yeah, hack me ;)": "Oohhhhhh yeee"
+};
+
 var BirthdayApp = function (_React$Component) {
   _inherits(BirthdayApp, _React$Component);
 
   function BirthdayApp() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, BirthdayApp);
 
-    return _possibleConstructorReturn(this, (BirthdayApp.__proto__ || Object.getPrototypeOf(BirthdayApp)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = BirthdayApp.__proto__ || Object.getPrototypeOf(BirthdayApp)).call.apply(_ref, [this].concat(args))), _this), _this.state = { password: "" }, _this.onPasswordChange = function (event) {
+      return _this.setState({ password: event.target.value });
+    }, _this.componentWillMount = function () {
+      window.Start_Vlada_hacking = function () {
+        _this.setState({ password: "yeah, hack me ;)" });
+      };
+    }, _this.componentDidMount = function () {
+      _this.pwdInput.focus();
+    }, _this.componentDidUpdate = function () {
+      _this.pwdInput.focus();
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(BirthdayApp, [{
     key: "render",
     value: function render() {
-      return _react2.default.createElement(Password, null);
+      var _this2 = this;
+
+      var props = {
+        password: this.state.password,
+        onPasswordChange: this.onPasswordChange,
+        inputRef: function inputRef(ref) {
+          _this2.pwdInput = ref;
+        }
+      };
+
+      var mainComponent = _react2.default.createElement(Password, props);
+      if (screens[this.state.password]) {
+        var component = screens[this.state.password];
+        mainComponent = _react2.default.createElement(
+          "div",
+          {
+            style: {
+              height: "100vh",
+              width: "100vw",
+              display: "flex",
+              flexDirection: "column"
+            }
+          },
+          _react2.default.createElement(PasswordHeader, props),
+          component
+        );
+      }
+      return mainComponent;
     }
   }]);
 
   return BirthdayApp;
 }(_react2.default.Component);
 
-var Password = function (_React$Component2) {
-  _inherits(Password, _React$Component2);
-
-  function Password() {
-    _classCallCheck(this, Password);
-
-    return _possibleConstructorReturn(this, (Password.__proto__ || Object.getPrototypeOf(Password)).apply(this, arguments));
-  }
-
-  _createClass(Password, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { style: { height: "100%", width: "100%", display: "flex", alignItems: "center", justifyContent: "center" } },
-        _react2.default.createElement(
-          "div",
-          { style: {} },
-          _react2.default.createElement("input", { placeholder: "type password" }),
-          " "
-        )
-      );
-    }
-  }]);
-
-  return Password;
-}(_react2.default.Component);
-
-console.log("Hello, use window.Start_Vlada_hacking()");
-window.Start_Vlada_hacking = function () {
-  alert("ok");
+var Password = function Password(_ref2) {
+  var password = _ref2.password,
+      onPasswordChange = _ref2.onPasswordChange,
+      inputRef = _ref2.inputRef;
+  return _react2.default.createElement(
+    "div",
+    {
+      style: {
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }
+    },
+    _react2.default.createElement(
+      "div",
+      null,
+      _react2.default.createElement("input", {
+        placeholder: "type password",
+        value: password,
+        onChange: onPasswordChange,
+        ref: inputRef,
+        onFocus: function onFocus(e) {
+          var tmp = e.target.value;
+          e.target.value = "";
+          e.target.value = tmp;
+        }
+      })
+    )
+  );
 };
+
+var PasswordHeader = function PasswordHeader(_ref3) {
+  var password = _ref3.password,
+      onPasswordChange = _ref3.onPasswordChange,
+      inputRef = _ref3.inputRef;
+  return _react2.default.createElement(
+    "div",
+    {
+      style: {
+        height: "10%",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column"
+      }
+    },
+    "\u041F\u0430\u0440\u043E\u043B\u044C \u0434\u043B\u044F \u044D\u0442\u043E\u0439 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B, \u0437\u0430\u043F\u043E\u043C\u043D\u0438, \u0447\u0442\u043E\u0431 \u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F",
+    _react2.default.createElement(
+      "div",
+      null,
+      _react2.default.createElement("input", {
+        placeholder: "type password",
+        value: password,
+        onChange: onPasswordChange,
+        ref: inputRef,
+        onFocus: function onFocus(e) {
+          var tmp = e.target.value;
+          e.target.value = "";
+          e.target.value = tmp;
+        }
+      })
+    )
+  );
+};
+
+console.log("Hello, if you are Vlade use window.Start_Vlada_hacking()");
 
 _reactDom2.default.render(_react2.default.createElement(BirthdayApp, null), document.getElementById("root"));
 
