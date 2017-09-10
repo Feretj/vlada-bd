@@ -16,10 +16,19 @@ class BirthdayApp extends React.Component {
       this.setState({ password: "yeah, hack me ;)" });
     };
   };
+  componentDidMount = () => {
+    this.pwdInput.focus();
+  };
+  componentDidUpdate = () => {
+    this.pwdInput.focus();
+  };
   render() {
     const props = {
       password: this.state.password,
-      onPasswordChange: this.onPasswordChange
+      onPasswordChange: this.onPasswordChange,
+      inputRef: ref => {
+        this.pwdInput = ref;
+      }
     };
 
     let mainComponent = <Password {...props} />;
@@ -30,11 +39,12 @@ class BirthdayApp extends React.Component {
           style={{
             height: "100vh",
             width: "100vw",
-            display: "flex"
+            display: "flex",
+            flexDirection: "column"
           }}
         >
           <PasswordHeader {...props} />
-          <component />{" "}
+          {component}
         </div>
       );
     }
@@ -42,7 +52,7 @@ class BirthdayApp extends React.Component {
   }
 }
 
-const Password = ({ password, onPasswordChange }) => (
+const Password = ({ password, onPasswordChange, inputRef }) => (
   <div
     style={{
       height: "100vh",
@@ -57,13 +67,19 @@ const Password = ({ password, onPasswordChange }) => (
         placeholder="type password"
         value={password}
         onChange={onPasswordChange}
+        ref={inputRef}
+        onFocus={e => {
+          const tmp = e.target.value;
+          e.target.value = "";
+          e.target.value = tmp;
+        }}
       />
       <input type="button" />
     </div>
   </div>
 );
 
-const PasswordHeader = ({ password, onPasswordChange }) => (
+const PasswordHeader = ({ password, onPasswordChange, inputRef }) => (
   <div
     style={{
       height: "10%",
@@ -80,6 +96,12 @@ const PasswordHeader = ({ password, onPasswordChange }) => (
         placeholder="type password"
         value={password}
         onChange={onPasswordChange}
+        ref={inputRef}
+        onFocus={e => {
+          const tmp = e.target.value;
+          e.target.value = "";
+          e.target.value = tmp;
+        }}
       />
       <input type="button" />
     </div>
