@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/Feretj/vlada-bd#readme",
   "dependencies": {
+    "brace": "^0.10.0",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
+    "react-ace": "^5.2.0",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {

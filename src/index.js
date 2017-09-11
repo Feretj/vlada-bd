@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import AceEditor from "react-ace";
 
+import "brace/mode/javascript";
+import "brace/theme/solarized_dark";
 import startBallGame from "./ballGame.js";
 
 const Problem = ({ children, header }) => (
@@ -21,11 +24,11 @@ const Problem = ({ children, header }) => (
 );
 
 const FirstProblem = () => (
-  <Problem header="1. Caesar 12">
+  <Problem header="1. Caesar 13">
     <div>
-      Расшивруй это сообщение, оно содержит пароль для следующей страницы:
+      Расшифруй это сообщение, оно содержит пароль для следующей страницы:
       <br />
-      Bmeeiadp rad ftq zqjf bmsq ue RudefFdk
+      Cnffjbeq sbe gur arkg cntr vf SvefgGel
     </div>
   </Problem>
 );
@@ -46,7 +49,7 @@ class SecondProblem extends React.Component {
       <Problem header={"2. Ball game"}>
         <div>
           {this.state.win ? (
-            "Ты выграла! Следующий пароль Game0ver"
+            "Ты выиграла! Следующий пароль Game0ver"
           ) : (
             <div style={{ backgroundColor: "black", padding: 1 }}>
               <canvas
@@ -64,6 +67,72 @@ class SecondProblem extends React.Component {
   }
 }
 
+const ThirdProblem = () => (
+  <Problem header="3. Do you know how to use internet?">
+    <div>
+      Next password is just answer for this question:
+      <br />
+      For what kind of car was the first unlocked iPhone traded?
+    </div>
+  </Problem>
+);
+
+class FourthProblem extends React.Component {
+  state = {
+    code:
+      "function vladaSort(array) { // Don't change\n// ... your code\nreturn array;\n}\n// P.S. you can use more that one function, but don't change name of main function\nvladaSort(array); // Don't change",
+    done: false
+  };
+  componentDidUpdate() {
+    "use strict";
+    const array = [
+      1,
+      8,
+      6,
+      53,
+      34,
+      5,
+      2,
+      2,
+      456,
+      77,
+      343,
+      23,
+      56,
+      75,
+      43,
+      2,
+      1,
+      242,
+      53,
+      4353,
+      23,
+      23325,
+      5333,
+      332
+    ];
+    const vladaSort = eval(this.state.code);
+    alert(vladaSort(array));
+  }
+  render() {
+    return (
+      <Problem header="4. Напиши функцию сортировки)))">
+        <div>
+          <AceEditor
+            width="700px"
+            mode="javascript"
+            theme="solarized_dark"
+            onChange={code => this.setState({ code })}
+            value={this.state.code}
+            name="UNIQUE_ID_OF_DIV"
+            editorProps={{ $blockScrolling: true }}
+          />,
+        </div>
+      </Problem>
+    );
+  }
+}
+
 const Tip = () => (
   <Problem header="Подсказка">
     Открой консоль разработчика, в хроме ctrl-shift-J
@@ -71,12 +140,12 @@ const Tip = () => (
 );
 
 const Tips = () => (
-  <Problem header="Подсказки, хей, многое ты хочешь)">
+  <Problem header="Подсказки, хей, многого ты хочешь)">
     <ul>
       <li>Поешь хорошо</li>
       <li>Почитай Платона</li>
-      <li>Начти определять, какие эмоции ты ощущаешь</li>
-      <li>Переодически занимайся физическими упражнениями</li>
+      <li>Начни определять, какие эмоции ты ощущаешь</li>
+      <li>Периодически занимайся физическими упражнениями</li>
       <li>
         А на счет этого сайта, гуглинг названий может помочь) Можно еще спросить
         у Сережи
@@ -89,15 +158,32 @@ const Tips = () => (
   </Problem>
 );
 
+const Masha = () => (
+  <Problem>
+    <div style={{ width: 400 }}>
+      Надеюсь, что тебе было сложно пройти все это(потому что мне было сложно, а
+      я же умная c;). Расти большой, расти не вредной, оставайся милым
+      человеком, верь в себя и пусть тебя окружают люди, которые тоже в тебя
+      верят, любят и ценят! {"<"}3 ❤ <br /> <br />
+      - Маша Воробьева
+    </div>
+  </Problem>
+);
+
 const screens = {
   happybirthday: "Привет",
   vlada: null,
   sergey: "wtf",
   "yeah, hack me ;)": <FirstProblem />,
   firsttry: <SecondProblem />,
-  game0ver: <div />,
+  game0ver: <ThirdProblem />,
+  "nissan 350z": <FourthProblem />,
   tip: <Tip />,
-  tips: <Tips />
+  hint: <Tip />,
+  hints: <Tips />,
+  tips: <Tips />,
+  masha: <Masha />,
+  maria: <Masha />
 };
 
 class BirthdayApp extends React.Component {
