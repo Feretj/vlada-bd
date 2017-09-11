@@ -179,6 +179,186 @@ class FourthProblem extends React.Component {
   }
 }
 
+class FifthProblem extends React.Component {
+  state = {
+    win: false,
+    first: { red: "", green: "", blue: "" },
+    second: { red: "", green: "", blue: "" },
+    third: { red: "", green: "", blue: "" }
+  };
+  render() {
+    return (
+      <Problem
+        header={"5. На сколько тебе известны цвета? Подпиши rgb значения"}
+      >
+        {isEqual(this.state.first, { red: "128", green: "23", blue: "134" }) &&
+        isEqual(this.state.second, { red: "47", green: "230", blue: "87" }) &&
+        isEqual(this.state.third, { red: "32", green: "139", blue: "237" }) ? (
+          'Правильно, следующий пароль: "eye of eagle"'
+        ) : (
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <div>
+              <div
+                style={{
+                  backgroundColor: "rgb(128, 23, 134)",
+                  width: "200px",
+                  height: "300px",
+                  marginRight: 20
+                }}
+              />
+              <div style={{ width: "200px" }}>
+                red:<input
+                  value={this.state.first.red}
+                  onChange={event =>
+                    this.setState({
+                      first: { ...this.state.first, red: event.target.value }
+                    })}
+                />green:<input
+                  value={this.state.first.green}
+                  onChange={event =>
+                    this.setState({
+                      first: { ...this.state.first, green: event.target.value }
+                    })}
+                />blue:<input
+                  value={this.state.first.blue}
+                  onChange={event =>
+                    this.setState({
+                      first: { ...this.state.first, blue: event.target.value }
+                    })}
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                style={{
+                  backgroundColor: "rgb(47, 230, 87)",
+                  width: "200px",
+                  height: "300px",
+                  marginRight: 20
+                }}
+              />
+              <div style={{ width: "200px" }}>
+                red:<input
+                  value={this.state.second.red}
+                  onChange={event =>
+                    this.setState({
+                      second: { ...this.state.second, red: event.target.value }
+                    })}
+                />green:<input
+                  value={this.state.second.green}
+                  onChange={event =>
+                    this.setState({
+                      second: {
+                        ...this.state.second,
+                        green: event.target.value
+                      }
+                    })}
+                />blue:<input
+                  value={this.state.second.blue}
+                  onChange={event =>
+                    this.setState({
+                      second: { ...this.state.second, blue: event.target.value }
+                    })}
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                style={{
+                  backgroundColor: "rgb(32, 139, 237)",
+                  width: "200px",
+                  height: "300px",
+                  marginRight: 20
+                }}
+              />
+              <div style={{ width: "200px" }}>
+                red:<input
+                  value={this.state.third.red}
+                  onChange={event =>
+                    this.setState({
+                      third: { ...this.state.third, red: event.target.value }
+                    })}
+                />green:<input
+                  value={this.state.third.green}
+                  onChange={event =>
+                    this.setState({
+                      third: { ...this.state.third, green: event.target.value }
+                    })}
+                />blue:<input
+                  value={this.state.third.blue}
+                  onChange={event =>
+                    this.setState({
+                      third: { ...this.state.third, blue: event.target.value }
+                    })}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+      </Problem>
+    );
+  }
+}
+
+class SixthProblem extends React.Component {
+  state = {
+    win: false,
+    first: "",
+    second: "",
+    third: ""
+  };
+  render() {
+    return (
+      <Problem
+        header={
+          "6. У меня закончились идеи не сложных заданий, поэтому просто реши выражения :D Зато эта страница последняя с заданием)"
+        }
+      >
+        {isEqual(this.state.first, "1") &&
+        isEqual(this.state.second, "2") &&
+        isEqual(this.state.third, "3") ? (
+          "Ууууу, ты смогла все пройти!!!)))) Теперь перейдем к хорошему, перейди по паролю happyB1rthday0"
+        ) : (
+          <div>
+            <div>
+              <div>5 = {"3x"} + 2</div>
+              <input
+                value={this.state.first}
+                onChange={event =>
+                  this.setState({
+                    first: event.target.value
+                  })}
+              />
+            </div>
+            <br />
+            <div>
+              <div>9*3 - 5*5</div>
+              <input
+                value={this.state.second}
+                onChange={event =>
+                  this.setState({
+                    second: event.target.value
+                  })}
+              />
+            </div>
+            <br />
+            <div>
+              <div>lg(100) + 1</div>
+              <input
+                value={this.state.third}
+                onChange={event =>
+                  this.setState({
+                    third: event.target.value
+                  })}
+              />
+            </div>
+          </div>
+        )}
+      </Problem>
+    );
+  }
+}
+
 const Tip = () => (
   <Problem header="Подсказка">
     Открой консоль разработчика, в хроме ctrl-shift-J
@@ -216,14 +396,68 @@ const Masha = () => (
   </Problem>
 );
 
+const HappyBirthday = () => (
+  <div
+    style={{
+      height: "100vh",
+      width: "100vw",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column"
+    }}
+  >
+    <div style={{ fontSize: 16 }}>
+      Вот ты и дошла до сюда)<br /> Не буду особо то-то писать, только скажу,
+      что я очень рад, что у меня есть такой друг, как ты ^^ <br /> С Днем
+      Родженья!!1111
+    </div>
+    <br />
+    <img
+      src="http://www.pngmart.com/files/1/Birthday-Cake-PNG-HD.png"
+      width="500px"
+    />
+    <br />
+    <div>
+      Так, надо и про подарок не забывать, пройди по паролю "give me my present"
+    </div>
+    <div>
+      Так же вот список всех паролей, которые существуют, чтоб ты могла
+      посмотреть все)<br />
+      <br />happybirthday<br />vlada<br />sergey<br />yeah, hack me ;)<br />firsttry<br />game0ver<br />
+      {"nissan 350z"}
+      <br />improgger<br />eye of eagle<br />happyb1rthday0<br />hint<br />hints<br />masha<br />
+      give me my present
+    </div>
+  </div>
+);
+
+const Present = () => (
+  <Problem>
+    Координаты: 55.805813, 37.546204 <br /> P.S. Я знаю человека, который может
+    доставить от туда c;
+  </Problem>
+);
+
 const screens = {
   happybirthday: "Привет",
-  vlada: null,
-  sergey: "wtf",
+  vlada: (
+    <Problem>
+      <img
+        src="https://pp.userapi.com/c315827/v315827109/1ad5/c5DJ5v1LsW0.jpg"
+        width="400px"
+      />
+    </Problem>
+  ),
+  sergey: <Problem>Это я, зачем вписывать мое имя</Problem>,
   "yeah, hack me ;)": <FirstProblem />,
   firsttry: <SecondProblem />,
   game0ver: <ThirdProblem />,
   "nissan 350z": <FourthProblem />,
+  improgger: <FifthProblem />,
+  "eye of eagle": <SixthProblem />,
+  happyb1rthday0: <HappyBirthday />,
+  "give me my present": <Present />,
   tip: <Tip />,
   hint: <Tip />,
   hints: <Tips />,
