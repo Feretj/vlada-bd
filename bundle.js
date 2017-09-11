@@ -9779,11 +9779,11 @@ var BirthdayApp = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = BirthdayApp.__proto__ || Object.getPrototypeOf(BirthdayApp)).call.apply(_ref, [this].concat(args))), _this), _this.state = { password: "" }, _this.onPasswordChange = function (event) {
-      return _this.setState({ password: event.target.value });
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = BirthdayApp.__proto__ || Object.getPrototypeOf(BirthdayApp)).call.apply(_ref, [this].concat(args))), _this), _this.state = { secret: "" }, _this.onSecretChange = function (event) {
+      return _this.setState({ secret: event.target.value });
     }, _this.componentWillMount = function () {
       window.Start_Vlada_hacking = function () {
-        _this.setState({ password: "yeah, hack me ;)" });
+        _this.setState({ secret: "yeah, hack me ;)" });
       };
     }, _this.componentDidMount = function () {
       _this.pwdInput.focus();
@@ -9798,16 +9798,16 @@ var BirthdayApp = function (_React$Component) {
       var _this2 = this;
 
       var props = {
-        password: this.state.password,
-        onPasswordChange: this.onPasswordChange,
+        secret: this.state.secret,
+        onSecretChange: this.onSecretChange,
         inputRef: function inputRef(ref) {
           _this2.pwdInput = ref;
         }
       };
 
-      var mainComponent = _react2.default.createElement(Password, props);
-      if (screens[this.state.password]) {
-        var component = screens[this.state.password];
+      var mainComponent = _react2.default.createElement(Secret, props);
+      if (screens[this.state.secret]) {
+        var component = screens[this.state.secret];
         mainComponent = _react2.default.createElement(
           "div",
           {
@@ -9818,7 +9818,7 @@ var BirthdayApp = function (_React$Component) {
               flexDirection: "column"
             }
           },
-          _react2.default.createElement(PasswordHeader, props),
+          _react2.default.createElement(SecretHeader, props),
           component
         );
       }
@@ -9829,9 +9829,9 @@ var BirthdayApp = function (_React$Component) {
   return BirthdayApp;
 }(_react2.default.Component);
 
-var Password = function Password(_ref2) {
-  var password = _ref2.password,
-      onPasswordChange = _ref2.onPasswordChange,
+var Secret = function Secret(_ref2) {
+  var secret = _ref2.secret,
+      onSecretChange = _ref2.onSecretChange,
       inputRef = _ref2.inputRef;
   return _react2.default.createElement(
     "div",
@@ -9849,8 +9849,8 @@ var Password = function Password(_ref2) {
       null,
       _react2.default.createElement("input", {
         placeholder: "type password",
-        value: password,
-        onChange: onPasswordChange,
+        value: secret,
+        onChange: onSecretChange,
         ref: inputRef,
         onFocus: function onFocus(e) {
           var tmp = e.target.value;
@@ -9862,9 +9862,9 @@ var Password = function Password(_ref2) {
   );
 };
 
-var PasswordHeader = function PasswordHeader(_ref3) {
-  var password = _ref3.password,
-      onPasswordChange = _ref3.onPasswordChange,
+var SecretHeader = function SecretHeader(_ref3) {
+  var secret = _ref3.secret,
+      onSecretChange = _ref3.onSecretChange,
       inputRef = _ref3.inputRef;
   return _react2.default.createElement(
     "div",
@@ -9884,8 +9884,8 @@ var PasswordHeader = function PasswordHeader(_ref3) {
       null,
       _react2.default.createElement("input", {
         placeholder: "type password",
-        value: password,
-        onChange: onPasswordChange,
+        value: secret,
+        onChange: onSecretChange,
         ref: inputRef,
         onFocus: function onFocus(e) {
           var tmp = e.target.value;

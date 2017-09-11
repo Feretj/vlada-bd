@@ -9,11 +9,11 @@ const screens = {
 };
 
 class BirthdayApp extends React.Component {
-  state = { password: "" };
-  onPasswordChange = event => this.setState({ password: event.target.value });
+  state = { secret: "" };
+  onSecretChange = event => this.setState({ secret: event.target.value });
   componentWillMount = () => {
     window.Start_Vlada_hacking = () => {
-      this.setState({ password: "yeah, hack me ;)" });
+      this.setState({ secret: "yeah, hack me ;)" });
     };
   };
   componentDidMount = () => {
@@ -24,16 +24,16 @@ class BirthdayApp extends React.Component {
   };
   render() {
     const props = {
-      password: this.state.password,
-      onPasswordChange: this.onPasswordChange,
+      secret: this.state.secret,
+      onSecretChange: this.onSecretChange,
       inputRef: ref => {
         this.pwdInput = ref;
       }
     };
 
-    let mainComponent = <Password {...props} />;
-    if (screens[this.state.password]) {
-      const component = screens[this.state.password];
+    let mainComponent = <Secret {...props} />;
+    if (screens[this.state.secret]) {
+      const component = screens[this.state.secret];
       mainComponent = (
         <div
           style={{
@@ -43,7 +43,7 @@ class BirthdayApp extends React.Component {
             flexDirection: "column"
           }}
         >
-          <PasswordHeader {...props} />
+          <SecretHeader {...props} />
           {component}
         </div>
       );
@@ -52,7 +52,7 @@ class BirthdayApp extends React.Component {
   }
 }
 
-const Password = ({ password, onPasswordChange, inputRef }) => (
+const Secret = ({ secret, onSecretChange, inputRef }) => (
   <div
     style={{
       height: "100vh",
@@ -65,8 +65,8 @@ const Password = ({ password, onPasswordChange, inputRef }) => (
     <div>
       <input
         placeholder="type password"
-        value={password}
-        onChange={onPasswordChange}
+        value={secret}
+        onChange={onSecretChange}
         ref={inputRef}
         onFocus={e => {
           const tmp = e.target.value;
@@ -78,7 +78,7 @@ const Password = ({ password, onPasswordChange, inputRef }) => (
   </div>
 );
 
-const PasswordHeader = ({ password, onPasswordChange, inputRef }) => (
+const SecretHeader = ({ secret, onSecretChange, inputRef }) => (
   <div
     style={{
       height: "10%",
@@ -93,8 +93,8 @@ const PasswordHeader = ({ password, onPasswordChange, inputRef }) => (
     <div>
       <input
         placeholder="type password"
-        value={password}
-        onChange={onPasswordChange}
+        value={secret}
+        onChange={onSecretChange}
         ref={inputRef}
         onFocus={e => {
           const tmp = e.target.value;
