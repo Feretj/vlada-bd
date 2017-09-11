@@ -9750,6 +9750,10 @@ var _reactDom = __webpack_require__(98);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _ballGame = __webpack_require__(184);
+
+var _ballGame2 = _interopRequireDefault(_ballGame);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9758,56 +9762,210 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var screens = {
-  happybirthday: "Привет",
-  vlada: null,
-  sergey: "wtf",
-  "yeah, hack me ;)": "Oohhhhhh yeee"
+var Problem = function Problem(_ref) {
+  var children = _ref.children,
+      header = _ref.header;
+  return _react2.default.createElement(
+    "div",
+    {
+      style: {
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column"
+      }
+    },
+    _react2.default.createElement(
+      "div",
+      { style: { fontSize: 20 } },
+      header
+    ),
+    _react2.default.createElement("br", null),
+    _react2.default.createElement(
+      "div",
+      null,
+      children
+    )
+  );
 };
 
-var BirthdayApp = function (_React$Component) {
-  _inherits(BirthdayApp, _React$Component);
+var FirstProblem = function FirstProblem() {
+  return _react2.default.createElement(
+    Problem,
+    { header: "1. Caesar 12" },
+    _react2.default.createElement(
+      "div",
+      null,
+      "\u0420\u0430\u0441\u0448\u0438\u0432\u0440\u0443\u0439 \u044D\u0442\u043E \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435, \u043E\u043D\u043E \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043F\u0430\u0440\u043E\u043B\u044C \u0434\u043B\u044F \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0435\u0439 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B:",
+      _react2.default.createElement("br", null),
+      "Bmeeiadp rad ftq zqjf bmsq ue RudefFdk"
+    )
+  );
+};
 
-  function BirthdayApp() {
-    var _ref;
+var SecondProblem = function (_React$Component) {
+  _inherits(SecondProblem, _React$Component);
+
+  function SecondProblem() {
+    var _ref2;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, BirthdayApp);
+    _classCallCheck(this, SecondProblem);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = BirthdayApp.__proto__ || Object.getPrototypeOf(BirthdayApp)).call.apply(_ref, [this].concat(args))), _this), _this.state = { secret: "" }, _this.onSecretChange = function (event) {
-      return _this.setState({ secret: event.target.value });
-    }, _this.componentWillMount = function () {
-      window.Start_Vlada_hacking = function () {
-        _this.setState({ secret: "yeah, hack me ;)" });
-      };
-    }, _this.componentDidMount = function () {
-      _this.pwdInput.focus();
-    }, _this.componentDidUpdate = function () {
-      _this.pwdInput.focus();
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = SecondProblem.__proto__ || Object.getPrototypeOf(SecondProblem)).call.apply(_ref2, [this].concat(args))), _this), _this.state = { win: false }, _this.start = function () {
+      return (0, _ballGame2.default)(_this.canvas, function () {
+        return _this.setState({ win: true });
+      }, function () {
+        return _this.start();
+      });
     }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(SecondProblem, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.start();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        Problem,
+        { header: "2. Ball game" },
+        _react2.default.createElement(
+          "div",
+          null,
+          this.state.win ? "Ты выграла! Следующий пароль Game0ver" : _react2.default.createElement(
+            "div",
+            { style: { backgroundColor: "black", padding: 1 } },
+            _react2.default.createElement("canvas", {
+              width: "480",
+              height: "320",
+              ref: function ref(_ref3) {
+                _this2.canvas = _ref3;
+              }
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return SecondProblem;
+}(_react2.default.Component);
+
+var Tip = function Tip() {
+  return _react2.default.createElement(
+    Problem,
+    { header: "\u041F\u043E\u0434\u0441\u043A\u0430\u0437\u043A\u0430" },
+    "\u041E\u0442\u043A\u0440\u043E\u0439 \u043A\u043E\u043D\u0441\u043E\u043B\u044C \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0430, \u0432 \u0445\u0440\u043E\u043C\u0435 ctrl-shift-J"
+  );
+};
+
+var Tips = function Tips() {
+  return _react2.default.createElement(
+    Problem,
+    { header: "\u041F\u043E\u0434\u0441\u043A\u0430\u0437\u043A\u0438, \u0445\u0435\u0439, \u043C\u043D\u043E\u0433\u043E\u0435 \u0442\u044B \u0445\u043E\u0447\u0435\u0448\u044C)" },
+    _react2.default.createElement(
+      "ul",
+      null,
+      _react2.default.createElement(
+        "li",
+        null,
+        "\u041F\u043E\u0435\u0448\u044C \u0445\u043E\u0440\u043E\u0448\u043E"
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        "\u041F\u043E\u0447\u0438\u0442\u0430\u0439 \u041F\u043B\u0430\u0442\u043E\u043D\u0430"
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        "\u041D\u0430\u0447\u0442\u0438 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u044F\u0442\u044C, \u043A\u0430\u043A\u0438\u0435 \u044D\u043C\u043E\u0446\u0438\u0438 \u0442\u044B \u043E\u0449\u0443\u0449\u0430\u0435\u0448\u044C"
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        "\u041F\u0435\u0440\u0435\u043E\u0434\u0438\u0447\u0435\u0441\u043A\u0438 \u0437\u0430\u043D\u0438\u043C\u0430\u0439\u0441\u044F \u0444\u0438\u0437\u0438\u0447\u0435\u0441\u043A\u0438\u043C\u0438 \u0443\u043F\u0440\u0430\u0436\u043D\u0435\u043D\u0438\u044F\u043C\u0438"
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        "\u0410 \u043D\u0430 \u0441\u0447\u0435\u0442 \u044D\u0442\u043E\u0433\u043E \u0441\u0430\u0439\u0442\u0430, \u0433\u0443\u0433\u043B\u0438\u043D\u0433 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0439 \u043C\u043E\u0436\u0435\u0442 \u043F\u043E\u043C\u043E\u0447\u044C) \u041C\u043E\u0436\u043D\u043E \u0435\u0449\u0435 \u0441\u043F\u0440\u043E\u0441\u0438\u0442\u044C \u0443 \u0421\u0435\u0440\u0435\u0436\u0438"
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        "\u0410 \u0432\u043E\u043E\u0431\u0449\u0435, \u044F \u043B\u0435\u043D\u0438\u0432\u044B\u0439 \u0438 \u043E\u0441\u043E\u0431\u043E \u0441\u0432\u043E\u0439 \u043A\u043E\u0434 \u043D\u0435 \u0441\u043A\u0440\u044B\u0432\u0430\u043B, \u0432\u0441\u044F \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u043D\u0430 js, \u0442\u044B \u043B\u0435\u0433\u043A\u043E \u043C\u043E\u0436\u0435\u0448\u044C \u0435\u0435 \u0432\u0437\u043B\u043E\u043C\u0430\u0442\u044C, \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u0434\u043E\u0441\u0442\u0443\u043F \u043A\u043E \u0432\u0441\u0435\u043C\u0443, \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0432 \u043A\u043E\u0434))"
+      )
+    )
+  );
+};
+
+var screens = {
+  happybirthday: "Привет",
+  vlada: null,
+  sergey: "wtf",
+  "yeah, hack me ;)": _react2.default.createElement(FirstProblem, null),
+  firsttry: _react2.default.createElement(SecondProblem, null),
+  game0ver: _react2.default.createElement("div", null),
+  tip: _react2.default.createElement(Tip, null),
+  tips: _react2.default.createElement(Tips, null)
+};
+
+var BirthdayApp = function (_React$Component2) {
+  _inherits(BirthdayApp, _React$Component2);
+
+  function BirthdayApp() {
+    var _ref4;
+
+    var _temp2, _this3, _ret2;
+
+    _classCallCheck(this, BirthdayApp);
+
+    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return _ret2 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_ref4 = BirthdayApp.__proto__ || Object.getPrototypeOf(BirthdayApp)).call.apply(_ref4, [this].concat(args))), _this3), _this3.state = { secret: "" }, _this3.onSecretChange = function (event) {
+      return _this3.setState({ secret: event.target.value });
+    }, _this3.componentWillMount = function () {
+      window.Start_Vlada_hacking = function () {
+        _this3.setState({ secret: "yeah, hack me ;)" });
+      };
+    }, _this3.componentDidMount = function () {
+      _this3.pwdInput.focus();
+    }, _this3.componentDidUpdate = function () {
+      _this3.pwdInput.focus();
+    }, _temp2), _possibleConstructorReturn(_this3, _ret2);
   }
 
   _createClass(BirthdayApp, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this4 = this;
 
       var props = {
         secret: this.state.secret,
         onSecretChange: this.onSecretChange,
         inputRef: function inputRef(ref) {
-          _this2.pwdInput = ref;
+          _this4.pwdInput = ref;
         }
       };
 
       var mainComponent = _react2.default.createElement(Secret, props);
-      if (screens[this.state.secret]) {
-        var component = screens[this.state.secret];
+      if (screens[this.state.secret.toLowerCase()]) {
+        var component = screens[this.state.secret.toLowerCase()];
         mainComponent = _react2.default.createElement(
           "div",
           {
@@ -9829,10 +9987,10 @@ var BirthdayApp = function (_React$Component) {
   return BirthdayApp;
 }(_react2.default.Component);
 
-var Secret = function Secret(_ref2) {
-  var secret = _ref2.secret,
-      onSecretChange = _ref2.onSecretChange,
-      inputRef = _ref2.inputRef;
+var Secret = function Secret(_ref5) {
+  var secret = _ref5.secret,
+      onSecretChange = _ref5.onSecretChange,
+      inputRef = _ref5.inputRef;
   return _react2.default.createElement(
     "div",
     {
@@ -9862,10 +10020,10 @@ var Secret = function Secret(_ref2) {
   );
 };
 
-var SecretHeader = function SecretHeader(_ref3) {
-  var secret = _ref3.secret,
-      onSecretChange = _ref3.onSecretChange,
-      inputRef = _ref3.inputRef;
+var SecretHeader = function SecretHeader(_ref6) {
+  var secret = _ref6.secret,
+      onSecretChange = _ref6.onSecretChange,
+      inputRef = _ref6.inputRef;
   return _react2.default.createElement(
     "div",
     {
@@ -22536,6 +22694,182 @@ var ReactDOMInvalidARIAHook = {
 
 module.exports = ReactDOMInvalidARIAHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = startBallGame;
+function startBallGame(canvas, winCallback, failCallback) {
+  var ctx = canvas.getContext("2d");
+  var ballRadius = 10;
+  var x = canvas.width / 2;
+  var y = canvas.height - 30;
+  var dx = 4;
+  var dy = -4;
+  var paddleHeight = 10;
+  var paddleWidth = 75;
+  var paddleX = (canvas.width - paddleWidth) / 2;
+  var rightPressed = false;
+  var leftPressed = false;
+  var brickRowCount = 5;
+  var brickColumnCount = 3;
+  var brickWidth = 75;
+  var brickHeight = 20;
+  var brickPadding = 10;
+  var brickOffsetTop = 30;
+  var brickOffsetLeft = 30;
+  var score = 0;
+  var lives = 3;
+  var requestId;
+
+  var bricks = [];
+  for (var c = 0; c < brickColumnCount; c++) {
+    bricks[c] = [];
+    for (var r = 0; r < brickRowCount; r++) {
+      bricks[c][r] = { x: 0, y: 0, status: 1 };
+    }
+  }
+
+  document.addEventListener("keydown", keyDownHandler, false);
+  document.addEventListener("keyup", keyUpHandler, false);
+  document.addEventListener("mousemove", mouseMoveHandler, false);
+
+  function keyDownHandler(e) {
+    if (e.keyCode == 39) {
+      rightPressed = true;
+    } else if (e.keyCode == 37) {
+      leftPressed = true;
+    }
+  }
+  function keyUpHandler(e) {
+    if (e.keyCode == 39) {
+      rightPressed = false;
+    } else if (e.keyCode == 37) {
+      leftPressed = false;
+    }
+  }
+  function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+    if (relativeX > 0 && relativeX < canvas.width) {
+      paddleX = relativeX - paddleWidth / 2;
+    }
+  }
+  function collisionDetection() {
+    for (var _c = 0; _c < brickColumnCount; _c++) {
+      for (var _r = 0; _r < brickRowCount; _r++) {
+        var b = bricks[_c][_r];
+        if (b.status == 1) {
+          if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+            dy = -dy;
+            b.status = 0;
+            score++;
+            if (score == brickRowCount * brickColumnCount) {
+              winCallback();
+              cancelAnimationFrame(requestId);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+  }
+  function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+  }
+  function drawBricks() {
+    for (var _c2 = 0; _c2 < brickColumnCount; _c2++) {
+      for (var _r2 = 0; _r2 < brickRowCount; _r2++) {
+        if (bricks[_c2][_r2].status == 1) {
+          var brickX = _r2 * (brickWidth + brickPadding) + brickOffsetLeft;
+          var brickY = _c2 * (brickHeight + brickPadding) + brickOffsetTop;
+          bricks[_c2][_r2].x = brickX;
+          bricks[_c2][_r2].y = brickY;
+          ctx.beginPath();
+          ctx.rect(brickX, brickY, brickWidth, brickHeight);
+          ctx.fillStyle = "#0095DD";
+          ctx.fill();
+          ctx.closePath();
+        }
+      }
+    }
+  }
+  function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: " + score, 8, 20);
+  }
+  function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBricks();
+    drawBall();
+    drawPaddle();
+    drawScore();
+    drawLives();
+    collisionDetection();
+
+    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+      dx = -dx;
+    }
+    if (y + dy < ballRadius) {
+      dy = -dy;
+    } else if (y + dy > canvas.height - ballRadius) {
+      if (x > paddleX && x < paddleX + paddleWidth) {
+        dy = -dy;
+      } else {
+        lives--;
+        if (!lives) {
+          try {
+            failCallback();
+          } catch (e) {}
+          cancelAnimationFrame(requestId);
+          return;
+        } else {
+          x = canvas.width / 2;
+          y = canvas.height - 30;
+          dx = 5;
+          dy = -5;
+          paddleX = (canvas.width - paddleWidth) / 2;
+        }
+      }
+    }
+
+    if (rightPressed && paddleX < canvas.width - paddleWidth) {
+      paddleX += 7;
+    } else if (leftPressed && paddleX > 0) {
+      paddleX -= 7;
+    }
+
+    x += dx;
+    y += dy;
+    requestId = requestAnimationFrame(draw);
+  }
+
+  draw();
+}
 
 /***/ })
 /******/ ]);
