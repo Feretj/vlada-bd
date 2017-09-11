@@ -472,6 +472,7 @@ class BirthdayApp extends React.Component {
   componentWillMount = () => {
     window.Start_Vlada_hacking = () => {
       this.setState({ secret: "yeah, hack me ;)" });
+      return 'Да начнется "хакинг")';
     };
   };
   componentDidMount = () => {
