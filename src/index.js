@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import AceEditor from "react-ace";
+import { isEqual } from "lodash";
 
 import "brace/mode/javascript";
 import "brace/theme/solarized_dark";
@@ -80,11 +81,21 @@ const ThirdProblem = () => (
 class FourthProblem extends React.Component {
   state = {
     code:
-      "function vladaSort(array) { // Don't change\n// ... your code\nreturn array;\n}\n// P.S. you can use more that one function, but don't change name of main function\nvladaSort(array); // Don't change",
-    done: false
+      "// Here you can write your own functions here\n\nfunction vladaSort(array) { // Don't change\nlet newArray = array; // You can change it)\n// ... your code\n\nreturn newArray;\n}\nans = vladaSort(array); // Don't change",
+    done: false,
+    wrong: false,
+    cheat: false
   };
-  componentDidUpdate() {
-    "use strict";
+  check = () => {
+    const { code } = this.state;
+    if (
+      code.indexOf(".sort(") !== -1 ||
+      code.indexOf("alert(") !== -1 ||
+      code.indexOf("log(") !== -1
+    ) {
+      this.setState({ cheat: true, wrong: false });
+      return;
+    }
     const array = [
       1,
       8,
@@ -111,23 +122,58 @@ class FourthProblem extends React.Component {
       5333,
       332
     ];
-    const vladaSort = eval(this.state.code);
-    alert(vladaSort(array));
-  }
+    const sortedArray = [...array].sort();
+    let ans;
+    eval(this.state.code);
+    if (isEqual(ans, sortedArray)) {
+      this.setState({ done: true, wrong: false, cheat: false });
+    } else {
+      this.setState({ wrong: true, cheat: false });
+    }
+  };
   render() {
     return (
-      <Problem header="4. Напиши функцию сортировки)))">
-        <div>
-          <AceEditor
-            width="700px"
-            mode="javascript"
-            theme="solarized_dark"
-            onChange={code => this.setState({ code })}
-            value={this.state.code}
-            name="UNIQUE_ID_OF_DIV"
-            editorProps={{ $blockScrolling: true }}
-          />,
-        </div>
+      <Problem header="4. Напиши функцию сортировки чисел)))">
+        {this.state.done ? (
+          "Еееее, молодец! Следующий пароль ImProgger"
+        ) : (
+          <div>
+            <div
+              style={{
+                backgroundColor: "red",
+                color: "white",
+                paddingLeft: 10
+              }}
+            >
+              {this.state.cheat &&
+                "Не не не, функции sort, log и alert запрещены"}
+              {this.state.wrong && "Массив неверно отсортирован"}
+            </div>
+            <AceEditor
+              width="700px"
+              mode="javascript"
+              theme="solarized_dark"
+              onChange={code => this.setState({ code })}
+              value={this.state.code}
+              name="UNIQUE_ID_OF_DIV"
+              editorProps={{ $blockScrolling: true }}
+            />
+            <button
+              style={{
+                backgroundColor: "#2ce63e",
+                color: "white",
+                width: "700px",
+                height: "40px",
+                fontSize: 20,
+                borderWidth: 0,
+                marginTop: 1
+              }}
+              onClick={this.check}
+            >
+              Check
+            </button>
+          </div>
+        )}
       </Problem>
     );
   }
